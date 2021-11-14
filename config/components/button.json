@@ -1,0 +1,12 @@
+{
+  "type": "Button",
+  "name": "Button",
+  "available": true,
+  "default": "",
+  "pressed": "",
+  "disable": "",
+  "highlight": "",
+  "z": 0,
+  "vertex": [
+  ]
+}

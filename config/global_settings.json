@@ -1,0 +1,13 @@
+{
+  "window-width": 600,
+  "window-height": 800,
+  "resolution-width": 288,
+  "resolution-height": 512,
+  "adaptation-tactic": "FIXED_HEIGHT",
+  "window-title": "Flappy Bird",
+  "window-full-screen": false,
+  "enable-visual-debug": false,
+  "window-icon": "bird.png",
+  "max-frame-rate": 60,
+  "welcome-world": "welcome"
+}

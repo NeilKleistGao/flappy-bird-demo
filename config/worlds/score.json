@@ -1,0 +1,111 @@
+{
+  "world-name": "score",
+  "background-color": "#000000FF",
+  "camera": {
+    "x": 144,
+    "y": 256
+  },
+  "children": [
+    {
+      "id": 1,
+      "name": "title",
+      "position": {
+        "x": 144,
+        "y": 460
+      },
+      "scale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotate": 0,
+      "z-order": 1,
+      "components": [
+        {
+          "type": "Label",
+          "name": "Label",
+          "font": "manaspc.ttf",
+          "size": 24,
+          "text": "Your Score: 0",
+          "color": "#FFFFFFFF",
+          "alignment": 2
+        },
+        {
+          "type": "StateMachine",
+          "name": "ScoreGetter",
+          "driver-script": "score_getter.lua",
+          "classname": "ScoreGetter",
+          "subscription": [
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "background",
+      "position": {
+        "x": 144,
+        "y": 256
+      },
+      "scale": {
+        "x": 2,
+        "y": 2
+      },
+      "rotate": 0,
+      "z-order": 0,
+      "components": [
+        {
+          "type": "Sprite",
+          "name": "Sprite",
+          "filename": "sprites.png",
+          "shader": "sprite",
+          "boundary": {
+            "left-bottom": {
+              "x": 0,
+              "y": 0
+            },
+            "right-up": {
+              "x": 144,
+              "y": 256
+            }
+          },
+          "color": "#FFFFFFFF"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "info",
+      "position": {
+        "x": 144,
+        "y": 100
+      },
+      "scale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotate": 0,
+      "z-order": 1,
+      "components": [
+        {
+          "type": "Label",
+          "name": "Label",
+          "font": "manaspc.ttf",
+          "size": 18,
+          "text": "Press Space to Restart",
+          "color": "#FFFFFFFF",
+          "alignment": 2
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "type": "StateMachine",
+      "name": "GameStarter",
+      "driver-script": "game_starter.lua",
+      "classname": "GameStarter",
+      "subscription": [
+      ]
+    }
+  ]
+}

@@ -1,0 +1,392 @@
+{
+  "world-name": "game",
+  "background-color": "#000000FF",
+  "camera": {
+    "x": 144,
+    "y": 256
+  },
+  "children": [
+    {
+      "id": 1,
+      "name": "score",
+      "position": {
+        "x": 288,
+        "y": 512
+      },
+      "scale": {
+        "x": 1,
+        "y": 1
+      },
+      "anchor": {
+        "x": 1,
+        "y": 0.5
+      },
+      "rotate": 0,
+      "z-order": 2,
+      "components": [
+        {
+          "type": "Label",
+          "name": "Label",
+          "font": "manaspc.ttf",
+          "size": 12,
+          "text": "Score: 0",
+          "color": "#FFFFFFFF",
+          "alignment": 1
+        },
+        {
+          "type": "StateMachine",
+          "name": "ScoreLabel",
+          "driver-script": "score_label.lua",
+          "classname": "ScoreLabel",
+          "subscription": [
+            {
+              "event-name": "Pass",
+              "whitelist": ["__all__"]
+            },
+            {
+              "event-name": "GameOver",
+              "whitelist": ["__all__"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "background",
+      "position": {
+        "x": 144,
+        "y": 256
+      },
+      "scale": {
+        "x": 2,
+        "y": 2
+      },
+      "rotate": 0,
+      "z-order": 0,
+      "components": [
+        {
+          "type": "Sprite",
+          "name": "Sprite",
+          "filename": "sprites.png",
+          "shader": "sprite",
+          "boundary": {
+            "left-bottom": {
+              "x": 0,
+              "y": 0
+            },
+            "right-up": {
+              "x": 144,
+              "y": 256
+            }
+          },
+          "color": "#FFFFFFFF"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "bird",
+      "position": {
+        "x": 100,
+        "y": 312
+      },
+      "scale": {
+        "x": 1.5,
+        "y": 1.5
+      },
+      "rotate": 0,
+      "z-order": 2,
+      "components": [
+        {
+          "type": "Sprite",
+          "name": "Sprite",
+          "filename": "anim.png",
+          "shader": "sprite",
+          "boundary": {
+            "left-bottom": {
+              "x": 0,
+              "y": 0
+            },
+            "right-up": {
+              "x": 26,
+              "y": 22
+            }
+          },
+          "color": "#FFFFFFFF"
+        },
+        {
+          "type": "RigidBody",
+          "name": "RigidBody",
+          "init-position": {
+            "x": 100,
+            "y": 312
+          },
+          "init-angle": 0,
+          "angular-damping": 0,
+          "linear-damping": 0,
+          "rigid-type": 2,
+          "fixed-rotation": false,
+          "gravity-scale": 1,
+          "friction": 1,
+          "density": 0.01,
+          "category": 1,
+          "mask": 1,
+          "shape": {
+            "name": "polygon",
+            "data": {
+              "length": 1,
+              "vertex": [
+                {"x":  20, "y": 18}
+              ]
+            }
+          }
+        },
+        {
+          "type": "StateMachine",
+          "name": "Bird",
+          "driver-script": "bird.lua",
+          "classname": "Bird",
+          "subscription": [
+          ]
+        },
+        {
+          "type": "StateMachine",
+          "name": "Trainer",
+          "driver-script": "trainer.lua",
+          "classname": "Trainer",
+          "subscription": [
+            {
+              "event-name": "GameOver",
+              "whitelist": ["__all__"]
+            }
+          ]
+        },
+        {
+          "type": "Animation",
+          "name": "Animation",
+          "anim-name": "FlappyBird",
+          "loop": false,
+          "auto-play": false,
+          "start": "FlappyBird"
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": 5,
+      "name": "DeadArea",
+      "position": {
+        "x": 100,
+        "y": 537
+      },
+      "scale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotate": 0,
+      "z-order": 0,
+      "components": [
+        {
+          "type": "RigidBody",
+          "name": "RigidBody",
+          "init-position": {
+            "x": 100,
+            "y": 537
+          },
+          "init-angle": 0,
+          "angular-damping": 0,
+          "linear-damping": 0,
+          "rigid-type": 1,
+          "fixed-rotation": true,
+          "gravity-scale": 0,
+          "friction": 1,
+          "density": 0,
+          "category": 1,
+          "mask": 1,
+          "shape": {
+            "name": "polygon",
+            "data": {
+              "length": 1,
+              "vertex": [
+                {"x":  50, "y": 50}
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "ground1",
+      "position": {
+        "x": 154,
+        "y": 0
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0
+      },
+      "scale": {
+        "x": 2,
+        "y": 2
+      },
+      "rotate": 0,
+      "z-order": 2,
+      "components": [
+        {
+          "type": "Sprite",
+          "name": "Sprite",
+          "filename": "sprites.png",
+          "shader": "sprite",
+          "boundary": {
+            "left-bottom": {
+              "x": 146,
+              "y": 0
+            },
+            "right-up": {
+              "x": 300,
+              "y": 56
+            }
+          },
+          "color": "#FFFFFFFF"
+        },
+        {
+          "type": "StateMachine",
+          "name": "Scroller",
+          "driver-script": "scroller.lua",
+          "classname": "Scroller",
+          "subscription": [
+          ]
+        },
+        {
+          "type": "RigidBody",
+          "name": "RigidBody",
+          "init-position": {
+            "x": 154,
+            "y": 0
+          },
+          "init-angle": 0,
+          "angular-damping": 0,
+          "linear-damping": 0,
+          "rigid-type": 0,
+          "fixed-rotation": true,
+          "gravity-scale": 0,
+          "friction": 1,
+          "density": 0,
+          "category": 1,
+          "mask": 1,
+          "shape": {
+            "name": "polygon",
+            "data": {
+              "length": 4,
+              "vertex": [
+                {"x":  -154, "y": 112},
+                {"x":  154, "y": 112},
+                {"x":  154, "y": 0},
+                {"x":  -154, "y": 0}
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "ground2",
+      "position": {
+        "x": 460,
+        "y": 0
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0
+      },
+      "scale": {
+        "x": 2,
+        "y": 2
+      },
+      "rotate": 0,
+      "z-order": 2,
+      "components": [
+        {
+          "type": "Sprite",
+          "name": "Sprite",
+          "filename": "sprites.png",
+          "shader": "sprite",
+          "boundary": {
+            "left-bottom": {
+              "x": 146,
+              "y": 0
+            },
+            "right-up": {
+              "x": 300,
+              "y": 56
+            }
+          },
+          "color": "#FFFFFFFF"
+        },
+        {
+          "type": "StateMachine",
+          "name": "Scroller",
+          "driver-script": "scroller.lua",
+          "classname": "Scroller",
+          "subscription": [
+          ]
+        },
+        {
+          "type": "RigidBody",
+          "name": "RigidBody",
+          "init-position": {
+            "x": 462,
+            "y": 0
+          },
+          "init-angle": 0,
+          "angular-damping": 0,
+          "linear-damping": 0,
+          "rigid-type": 0,
+          "fixed-rotation": true,
+          "gravity-scale": 0,
+          "friction": 1,
+          "density": 0,
+          "category": 1,
+          "mask": 1,
+          "shape": {
+            "name": "polygon",
+            "data": {
+              "length": 4,
+              "vertex": [
+                {"x":  -154, "y": 112},
+                {"x":  154, "y": 112},
+                {"x":  154, "y": 0},
+                {"x":  -154, "y": 0}
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "type": "StateMachine",
+      "name": "PipesFactory",
+      "driver-script": "pipes_factory.lua",
+      "classname": "PipesFactory",
+      "subscription": [
+        {
+          "event-name": "Pass",
+          "whitelist": ["__all__"]
+        }
+      ]
+    },
+    {
+      "type": "PhysicsWorld",
+      "name": "PhysicsWorld",
+      "gravity": {
+        "x": 0,
+        "y": -5
+      }
+    }
+  ]
+}

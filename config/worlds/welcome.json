@@ -1,0 +1,232 @@
+{
+  "world-name": "welcome",
+  "background-color": "#000000FF",
+  "camera": {
+    "x": 144,
+    "y": 256
+  },
+  "children": [
+    {
+      "id": 1,
+      "name": "title",
+      "position": {
+        "x": 144,
+        "y": 480
+      },
+      "scale": {
+        "x": 1,
+        "y": 1
+      },
+      "rotate": 0,
+      "z-order": 1,
+      "components": [
+        {
+          "type": "Label",
+          "name": "Label",
+          "font": "manaspc.ttf",
+          "size": 28,
+          "text": "Flappy Bird",
+          "color": "#FFFFFFFF",
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "background",
+      "position": {
+        "x": 144,
+        "y": 256
+      },
+      "scale": {
+        "x": 2,
+        "y": 2
+      },
+      "rotate": 0,
+      "z-order": 0,
+      "components": [
+        {
+          "type": "Sprite",
+          "name": "Sprite",
+          "filename": "sprites.png",
+          "shader": "sprite",
+          "boundary": {
+            "left-bottom": {
+              "x": 0,
+              "y": 0
+            },
+            "right-up": {
+              "x": 144,
+              "y": 256
+            }
+          },
+          "color": "#FFFFFFFF"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "NormalButton",
+      "position": {
+        "x": 144,
+        "y": 150
+      },
+      "scale": {
+        "x": 2,
+        "y": 2
+      },
+      "rotate": 0,
+      "z-order": 1,
+      "components": [
+        {
+          "type": "Sprite",
+          "name": "Sprite",
+          "filename": "start_normal.png",
+          "shader": "sprite",
+          "boundary": {
+            "left-bottom": {
+              "x": 0,
+              "y": 0
+            },
+            "right-up": {
+              "x": 40,
+              "y": 14
+            }
+          },
+          "color": "#FFFFFFFF"
+        },
+        {
+          "type": "Button",
+          "name": "Button",
+          "available": true,
+          "default": "start_normal.png",
+          "pressed": "start_pressed.png",
+          "disable": "start_normal.png",
+          "highlight": "start_highlight.png",
+          "z": 1,
+          "vertex": [
+            {
+              "x": -40,
+              "y": 14
+            },
+            {
+              "x": 40,
+              "y": 14
+            },
+            {
+              "x": 40,
+              "y": -14
+            },
+            {
+              "x": -40,
+              "y": -14
+            }
+          ]
+        },
+        {
+          "type": "StateMachine",
+          "name": "WelcomeButton",
+          "driver-script": "welcome_button.lua",
+          "classname": "WelcomeButton",
+          "subscription": [
+          ],
+          "args": [
+            {
+              "name": "training_mode",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "TrainButton",
+      "position": {
+        "x": 144,
+        "y": 100
+      },
+      "scale": {
+        "x": 2,
+        "y": 2
+      },
+      "rotate": 0,
+      "z-order": 1,
+      "components": [
+        {
+          "type": "Sprite",
+          "name": "Sprite",
+          "filename": "train_normal.png",
+          "shader": "sprite",
+          "boundary": {
+            "left-bottom": {
+              "x": 0,
+              "y": 0
+            },
+            "right-up": {
+              "x": 40,
+              "y": 14
+            }
+          },
+          "color": "#FFFFFFFF"
+        },
+        {
+          "type": "Button",
+          "name": "Button",
+          "available": true,
+          "default": "train_normal.png",
+          "pressed": "train_pressed.png",
+          "disable": "train_normal.png",
+          "highlight": "train_highlight.png",
+          "z": 1,
+          "vertex": [
+            {
+              "x": -40,
+              "y": 14
+            },
+            {
+              "x": 40,
+              "y": 14
+            },
+            {
+              "x": 40,
+              "y": -14
+            },
+            {
+              "x": -40,
+              "y": -14
+            }
+          ]
+        },
+        {
+          "type": "StateMachine",
+          "name": "WelcomeButton",
+          "driver-script": "welcome_button.lua",
+          "classname": "WelcomeButton",
+          "subscription": [
+          ],
+          "args": [
+            {
+              "name": "training_mode",
+              "value": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "type": "StateMachine",
+      "name": "GameStarter",
+      "driver-script": "game_starter.lua",
+      "classname": "GameStarter",
+      "subscription": [
+        {
+          "event-name": "GameStart",
+          "whitelist": ["__all__"]
+        }
+      ]
+    }
+  ]
+}
