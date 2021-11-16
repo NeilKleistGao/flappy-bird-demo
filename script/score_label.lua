@@ -23,7 +23,9 @@ function ScoreLabel:onGameOver()
   print("score: "..tostring(self.score))
   Archive:setInteger("score", self.score)
   Archive:flush()
-  Game:destroyAndLoadWorld("score")
+  if not Archive:getBoolean("training") then
+    Game:destroyAndLoadWorld("score")
+  end
 end
 
 function ScoreLabel:exit()

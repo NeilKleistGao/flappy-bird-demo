@@ -3,7 +3,6 @@ Bird = class("Bird")
 function Bird:ctor()
   self.rigid = nil
   self.anim = nil
-  self.sprite = nil
   self.gg = false
 end
 
@@ -20,8 +19,7 @@ function Bird:updatePlay()
 end
 
 function Bird:fly()
-  self.rigid:setVelocity(engine.vec2(0, 0))
-  self.rigid:applyForce(engine.vec2(0, 400))
+  self.rigid:setVelocity(engine.vec2(0, 20))
   self.anim:play("fly")
 end
 

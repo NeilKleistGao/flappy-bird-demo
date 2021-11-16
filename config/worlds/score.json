@@ -105,6 +105,12 @@
       "driver-script": "game_starter.lua",
       "classname": "GameStarter",
       "subscription": [
+      ],
+      "args": [
+        {
+          "name": "auto",
+          "value": true
+        }
       ]
     }
   ]

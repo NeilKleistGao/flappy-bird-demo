@@ -3,7 +3,6 @@ Trainer = class("Trainer")
 function Trainer:ctor()
     self.bird = nil
     self.env = nil
-    self.timer = 0.0
 end
 
 function Trainer:enter()
@@ -16,7 +15,7 @@ function Trainer:enter()
     if _G["env"] ~= nil then
         self.env = _G["env"]
     else
-        local alg = engine.QLearning.create(2, 0.6, 0.8, 0.01)
+        local alg = engine.QLearning.create(2, 0.6, 0.8, 0)
         self.env = engine.Environment.create(nil, nil, alg, "q_learning.lua", "QLearningHelper")
         _G["env"] = self.env
     end
@@ -45,7 +44,4 @@ function Trainer:onGameOver()
 end
 
 function Trainer:exit()
-    if self.env ~= nil then
-        self.env:reset()
-    end
 end

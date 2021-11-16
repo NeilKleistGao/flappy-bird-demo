@@ -20,10 +20,10 @@ function PipesFactory:updateIdle(delta)
 end
 
 function PipesFactory:updateGenerate()
-  self.timer = self.timer + 1.2
+  self.timer = self.timer + 1.5
 
   local pipe = PrefabFactory:loadPrefab("pipe")
-  pipe:setPosition(engine.vec2(360, self.random:getRangeRandomNumber(-75, 50)))
+  pipe:setPosition(engine.vec2(360, self.random:getRangeRandomNumber(-50, 50)))
   self.game_object:addChild("pipe", pipe)
   self.list[self.tail] = pipe
   self.tail = self.tail + 1

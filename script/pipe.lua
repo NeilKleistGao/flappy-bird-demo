@@ -16,7 +16,7 @@ function Pipe:updateMove(delta)
   self.pos = self.pos + dx
   self.game_object:setPositionX(self.pos)
 
-  if self.pos <= 50.0 then
+  if self.pos <= 100.0 then
     self.notifyAll("Pass", nil)
     self.move("Rest")
   end
