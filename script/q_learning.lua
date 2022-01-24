@@ -17,7 +17,7 @@ end
 
 function QLearningHelper:getReward(agent, ob)
     if ob["gg"] then
-        return -1000
+        return -100
     else
         return 1
     end

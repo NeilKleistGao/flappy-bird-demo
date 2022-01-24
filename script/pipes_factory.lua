@@ -33,6 +33,7 @@ end
 
 function PipesFactory:getNextPipePosition()
   if self == nil or self.tail - self.head == 0 then
+    print(self.tail - self.head)
     return engine.vec2(360, 0)
   end
 

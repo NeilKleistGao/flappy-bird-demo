@@ -387,6 +387,15 @@
         "x": 0,
         "y": -5
       }
+    },
+    {
+      "type": "MusicPlayer",
+      "name": "BGM",
+      "filename": "bgm.mp3",
+      "auto-play": true,
+      "volume": 1.0,
+      "looping": true,
+      "looping-point": 0
     }
   ]
 }
